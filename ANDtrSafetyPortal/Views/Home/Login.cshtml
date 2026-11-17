@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow p-4">
+
+                <h2 class="text-center">ANDtr Login</h2>
+
+                <p class="text-center text-muted">
+                    Medical Device Safety Portal
+                </p>
+
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Login As
+                        </label>
+
+                        <select id="loginRole" class="form-select">
+                            <option value="Employee">ANDtr Employee</option>
+                            <option value="Customer">Customer</option>
+                        </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Email Address
+                        </label>
+                        <input type="email"
+                               class="form-control"
+                               placeholder="Enter your email" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Password
+                        </label>
+                        <input type="password"
+                               class="form-control"
+                               placeholder="Enter password" />
+                    </div>
+
+                    
+                    
+                    <button type="button"
+                            class="btn btn-primary w-100"
+                            onclick="goToDashboard()">
+                        Login
+                    </button>
+
+                    <script>
+                                            function goToDashboard() {
+                                                var role = document.getElementById("loginRole").value;
+
+                                                var dashboardUrl = '@Url.Action("Dashboard", "Home")';
+
+                                                window.location.href = dashboardUrl + "?role=" + role;
+                                            }
+                    </script>
+
+
+                </form>
+
+                    <p class="text-center mt-3">
+                        Don't have an account?
+                        <a asp-controller="Home"
+                           asp-action="Register">
+                            Register
+                        </a>
+                    </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+

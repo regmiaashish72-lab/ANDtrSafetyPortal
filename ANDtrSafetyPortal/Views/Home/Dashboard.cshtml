@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+
+    // Temporary role for testing the dashboard design
+    string role = Context.Request.Query["role"].ToString();
+
+    if (role != "Customer")
+    {
+        role = "Employee";
+    }
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h1>Welcome to your personalised ANDtr Dashboard</h1>
+
+        <p class="text-muted">
+            @if (role == "Employee")
+            {
+                <span>
+                    Manage medical device safety notices,
+                    risk reviews and shared findings.
+                </span>
+            }
+            else
+            {
+                <span>
+                    View safety findings shared with you
+                    and provide feedback.
+                </span>
+            }
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        @if (role == "Employee")
+        {
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h4>Search Notices</h4>
+                    <p>Find medical device safety and recall notices.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h4>Risk Reviews</h4>
+                    <p>Organise notices and add investigation notes.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h4>Shared Findings</h4>
+                    <p>Share safety findings with customers.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h4>Shared Findings</h4>
+                    <p>View findings shared with your account.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h4>Comments</h4>
+                    <p>Read findings and add your feedback.</p>
+                </div>
+            </div>
+        }
+
+        <div class="col-md-6">
+            <div class="card shadow-sm p-4 h-100">
+                <h4>My Account</h4>
+                <p>View your account information.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
