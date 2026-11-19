@@ -1,0 +1,37 @@
+﻿@model ANDtrSafetyPortal.Models.RiskReview
+
+@{
+    ViewData["Title"] = "Create Risk Review";
+}
+
+<h2>Create Risk Review</h2>
+
+<p>Create a new medical device risk review.</p>
+
+<form asp-controller="RiskReviews" asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Review Title</label>
+        <input asp-for="Title" class="form-control"
+               placeholder="Enter review title" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <select asp-for="Status" class="form-select">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Create Review
+    </button>
+
+    <a asp-controller="RiskReviews" asp-action="Index"
+       class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>

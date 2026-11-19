@@ -41,6 +41,12 @@
                 <div class="card shadow-sm p-4 h-100">
                     <h4>Search Notices</h4>
                     <p>Find medical device safety and recall notices.</p>
+
+                    <a asp-controller="SafetyNotices"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Search Notices
+                    </a>
                 </div>
             </div>
 
@@ -48,6 +54,12 @@
                 <div class="card shadow-sm p-4 h-100">
                     <h4>Risk Reviews</h4>
                     <p>Organise notices and add investigation notes.</p>
+
+                    <a asp-controller="RiskReviews"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        View Risk Reviews
+                    </a>
                 </div>
             </div>
 
@@ -62,8 +74,11 @@
         {
             <div class="col-md-6">
                 <div class="card shadow-sm p-4 h-100">
-                    <h4>Shared Findings</h4>
-                    <p>View findings shared with your account.</p>
+                    <a asp-controller="SharedFindings"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        View Shared Findings
+                    </a>
                 </div>
             </div>
 

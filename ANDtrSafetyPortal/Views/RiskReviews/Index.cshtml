@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ANDtrSafetyPortal.Models.RiskReview>
+
+@{
+    ViewData["Title"] = "Risk Reviews";
+}
+
+<h2>Risk Reviews</h2>
+
+<p>Manage medical device safety risk reviews.</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Review ID</th>
+            <th>Employee ID</th>
+            <th>Title</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model)
+        {
+            <tr>
+                <td>@review.ReviewID</td>
+                <td>@review.EmployeeID</td>
+                <td>@review.Title</td>
+                <td>@review.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No risk reviews have been created yet.</p>
+}

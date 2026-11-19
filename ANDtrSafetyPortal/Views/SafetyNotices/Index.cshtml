@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ANDtrSafetyPortal.Models.SafetyNotice>
+
+@{
+    ViewData["Title"] = "Safety Notices";
+}
+
+<h2>Medical Device Safety & Recall Notices</h2>
+
+<form method="get" asp-controller="SafetyNotices" asp-action="Index" class="mb-4">
+    <div class="input-group">
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Search by product or recall number..." />
+
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+</form>
+
+<p>Browse medical device recall notices below.</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Recall Number</th>
+            <th>Product</th>
+            <th>Recall Class</th>
+            <th>Company</th>
+            <th>Reason</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var notice in Model)
+        {
+            <tr>
+                <td>@notice.RecallNumber</td>
+                <td>@notice.ProductDescription</td>
+                <td>@notice.RecallClass</td>
+                <td>@notice.FirmName</td>
+                <td>@notice.RecallReason</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No safety notices found in the database yet.</p>
+}

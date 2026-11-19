@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ANDtrSafetyPortal.Models.SharedFinding>
+
+@{
+    ViewData["Title"] = "Shared Findings";
+}
+
+<div class="container mt-4">
+
+    <h2>My Shared Findings</h2>
+
+    <p class="text-muted">
+        View medical device risk reviews shared with you.
+    </p>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No findings have been shared with you yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Share ID</th>
+                    <th>Risk Review ID</th>
+                    <th>Shared Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var finding in Model)
+                {
+
+                    <tr>
+                        <td>@finding.ShareID</td>
+                        <td>@finding.ReviewID</td>
+                        <td>@finding.SharedAt.ToString("dd MMM yyyy")</td>
+                        <td>
+                            <a asp-controller="SharedFindings"
+                               asp-action="Details"
+                               asp-route-id="@finding.ReviewID"
+                               class="btn btn-primary btn-sm">
+                                View Details
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    }
+
+    <a asp-controller="Home"
+       asp-action="Dashboard"
+       asp-route-role="Customer"
+       class="btn btn-secondary">
+        Back to Dashboard
+    </a>
+
+</div>
